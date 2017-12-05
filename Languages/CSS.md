@@ -109,7 +109,29 @@ Class and ID are not to be used interchangeably. Class declarations are to be us
 
 We use SASS/SCSS because we are civilized. More specifically, we use SCSS for reasons.
 
-My preferred method of writing SCSS, and this is directed at you Zach, so you can correct me if you feel differently, is to write out SCSS in the same structure it is declared in HTML. This allows the DOM structure to be gleaned by looking at the SCSS so a basic understanding of layout can come together. There are limits to this, and ultimately it does not result in terribly beautiful compiled CSS, but I am also of the opinion that if you're writing SCSS to compile into minified CSS, maintainability of the SCSS is more important than readability of the resulting CSS.
+My preferred method of writing SCSS, and this is directed at you Zach, so you can correct me if you feel differently, is to write out SCSS in the same structure it is declared in HTML. This allows the DOM structure to be gleaned by looking at the SCSS so a basic understanding of layout can come together. There are limits to this, and ultimately it does not result in terribly beautiful compiled CSS, but I am also of the opinion that if you're writing SCSS to compile into minified CSS, maintainability of the SCSS is more important than readability of the resulting CSS. Example:
+
+```HTML
+<section class="stories">
+  <article class="stories__hot-ass-update">
+    <p>A bunch of crazy stuff happened, broh. Like it's nuts how much crap is going on.</p>
+  </article>
+</section>
+```
+
+```SCSS
+.stories {
+  //styles
+
+  .stories__hot-ass-updates {
+    //styles
+
+    p {
+      //styles
+    }
+  }
+}
+```
 
 ### Media Queries
 
