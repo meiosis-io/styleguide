@@ -4,7 +4,11 @@ Contained within is a collection of style rules and suggestions for markup and c
 
 ## Outline, Goals
 
-At time of writing, little conceptualization has been done on this, so this section will serve as an outline of what we would like to include. This section and this paragraph will be revised as more is added.
+At time of writing, little conceptualization has been done on this, so this section will serve as an outline of what we would like to include. This section and this paragraph will be revised as more is added. The first iterations of this project will outline general goals for each subsection, and as sections are added or removed, this README will be updated.
+
+### General
+
+TBD
 
 ### HTML
 
