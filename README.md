@@ -21,6 +21,17 @@ Don't have a hell of a lot in mind for this, but while I wouldn't mind throwing 
 ```HTML
 <div class="col-sm-12 bg-red text-green tacos-delicious"></div>
 ```
+so if we were to work on a framework, I think it would fall more into the realm of styleguide anyway. What I generally have in mind are, potentially project-to-project, a subset of utility classes and style that we lean on on a particular project. For example:
+
+```CSS
+//primary button used throughout site
+.button-primary {
+  //styles for one button to be used throughout the site, including hover and focus states, inside of this because we use scss because we're not savages, etc
+}
+
+```
+Because I've never used a set styleguide or framework for any project, this may be common practice, and if so ignore all of this.
+
 
 ### JavaScript
 
