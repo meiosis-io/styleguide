@@ -22,6 +22,10 @@ HTML
 </form>
 ```
 
+This is not to say semantic HTML elements cannot have Classes and, therefore, styles applied to them, simply that for the sake of accessibility, we use semantic HTML where possible.
+
+### BEM
+
 The Block-Element-Modifier (BEM) naming standard is to be used. Double underscores indicate child elements of a block. Example:
 
 HTML
@@ -123,7 +127,7 @@ My preferred method of writing SCSS, and this is directed at you Zach, so you ca
 .stories {
   //styles
 
-  .stories__hot-ass-updates {
+  .stories__hot-ass-update {
     //styles
 
     p {
