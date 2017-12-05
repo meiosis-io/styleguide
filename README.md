@@ -12,11 +12,15 @@ TBD
 
 ### HTML
 
-TBD
+My primary interests in HTML, including HTML that shows up in Vue and PHP, are accessibility and cleanliness of layout. To that end, I'd like to place *some* emphasis on semantic, accessible markup as opposed to div soup. -K
 
 ### CSS/SASS
 
-TBD
+Don't have a hell of a lot in mind for this, but while I wouldn't mind throwing together a light framework for us to use and tweak over time, I *really* don't want to fall into that modern framework trap of having so many utility classes that one may as well be using inline style, i.e.
+
+```HTML
+<div class="col-sm-12 bg-red text-green tacos-delicious"></div>
+```
 
 ### JavaScript
 
