@@ -2,9 +2,11 @@
 
 Below is a collection of rules and preferred methods of writing CSS and SASS. This will be expanded upon as time goes on and use cases pop up.
 
-## Naming
+## Basics
 
-Semantic naming is the goal here. If there is not a semantic HTML element to use, make sure your naming of an element with a Class or ID relays information about what that element does in the site. Example, this:
+### Naming
+
+Semantic naming is the goal here. If there is not a semantic HTML element to use, make sure your naming of an element with a Class or ID relays information about the function of that element. Example, this:
 
 HTML
 ```HTML
@@ -26,13 +28,36 @@ This is not to say semantic HTML elements cannot have Classes and, therefore, st
 
 ### BEM
 
-The Block-Element-Modifier (BEM) naming standard is to be used. Double underscores indicate child elements of a block. Example:
+The Block-Element-Modifier (BEM) naming standard is to be used.
+
+
+#### Block
+
+Blocks of code and/or markup used together are grouped into blocks. Example:
+
+```HTML
+<section class="contact">
+  <form>
+    <input>
+    <input>
+    <input>
+  </form>
+</section>
+```
+
+In this instance, the section is the block, containing a contact form. Note that the block Class name is semantic: it indicates the function of the section it is naming.
+
+#### Element
+
+Double underscores indicate elements within a block. Example:
 
 HTML
 ```HTML
-<section>
-  <form class="contact">
+<section class="contact">
+  <form>
     <input class="contact__first">
+    <input class="contact__last">
+    <input class="contact__email">
   </form>
 </section>
 ```
@@ -40,26 +65,32 @@ HTML
 CSS
 ```CSS
 .contact {
-  //styles applied to the contact block
+  //styles
 }
 
 .contact__first {
-  //styles applied to the first input
+  //styles
 }
 ```
+
+#### Modifier
 
 Double hyphens indicate element modifiers, I.E. an incomplete input. As above, keep it semantic:
 
 CSS
 ```CSS
 .contact__first--incomplete {
-  border: 2px solid red;
+  //styles
+}
+
+.contact__first--valid {
+  //styles
 }
 ```
 
 The end result being semantic CSS that makes it easy to skim and discern what is being styled and why.
 
-## Rule Declaration
+### Rule Declaration
 
 When applying styles to multiple elements, each declared element is separated by a comma and placed on a new line. Example:
 
@@ -71,7 +102,7 @@ When applying styles to multiple elements, each declared element is separated by
 }
 ```
 
-## Media Queries
+### Media Queries
 
 When doing media queries, from top to bottom, start with core styles, then work your way down in size from there. Example:
 
@@ -105,15 +136,15 @@ When doing media queries, from top to bottom, start with core styles, then work 
 }
 ```
 
-## Class and ID Declaration
+### Class and ID Declaration
 
-Class and ID are not to be used interchangeably. Class declarations are to be used to declare a style that will be reused on multiple elements. ID declarations are to be used on distinct, single use elements. Do *NOT* use a class on a single use element. And let's face it, there's probably not a lot of single use elements on whatever site we're working on.
+Class and ID are not to be used interchangeably. Class declarations are to be used to declare a style that will be reused on multiple elements. ID declarations are to be used on distinct, single use elements.
 
 ## SASS/SCSS
 
 We use SASS/SCSS because we are civilized. More specifically, we use SCSS for reasons.
 
-My preferred method of writing SCSS, and this is directed at you Zach, so you can correct me if you feel differently, is to write out SCSS in the same structure it is declared in HTML. This allows the DOM structure to be gleaned by looking at the SCSS so a basic understanding of layout can come together. There are limits to this, and ultimately it does not result in terribly beautiful compiled CSS, but I am also of the opinion that if you're writing SCSS to compile into minified CSS, maintainability of the SCSS is more important than readability of the resulting CSS. Example:
+My preferred method of writing SCSS, **and this is directed at you Zach**, so you can correct me if you feel differently, is to write out SCSS in the same structure it is declared in HTML. This allows the DOM structure to be gleaned by looking at the SCSS so a basic understanding of layout can come together. There are limits to this, and ultimately it does not result in terribly beautiful compiled CSS, but I am also of the opinion that if you're writing SCSS to compile into minified CSS, maintainability of the SCSS is more important than readability of the resulting CSS. Example:
 
 ```HTML
 <section class="stories">
@@ -123,7 +154,7 @@ My preferred method of writing SCSS, and this is directed at you Zach, so you ca
 </section>
 ```
 
-```SCSS
+```CSS
 .stories {
   //styles
 
@@ -211,17 +242,15 @@ To keep it semantic, legible and, most importantly, consistent, rule declaration
 
 ```CSS
 .element {
-  color: green;
-  border: 1px solid black;
+  //styles
 
   &:hover,
   &:focus {
-    color: purple;
-    border: 1px dotted red;
+    //hover styles (good band name)
   }
 
   @media (min-width: 480px) {
-    font-size: 16px;
+    //small styles
   }
 
   @media (max-width: 479px) {
