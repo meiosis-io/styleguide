@@ -154,7 +154,7 @@ My preferred method of writing SCSS, **and this is directed at you Zach**, so yo
 </section>
 ```
 
-```CSS
+```SCSS
 .stories {
   //styles
 
