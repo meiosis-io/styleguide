@@ -183,3 +183,27 @@ Declaring `.body {...}` is not entirely necessary but, depending on the structur
 Use as many partials as desired, as long as they are all appropriate in terms of organization and they are all imported into the master SCSS file.
 
 Variables, separate pages and reusable styles are encouraged to be in their own partials.
+
+### Media Queries
+
+Media queries are to be done on a per-element basis, for simplicity of editing.
+
+```SCSS
+nav {
+    ...
+
+    @media (min-width: 1280px) {
+        ...
+    }
+
+    @media (max-width: 1279px) {
+        ...
+    }
+
+    @media (max-width: 960px) {
+        ...
+    }
+
+    ...
+}
+```
