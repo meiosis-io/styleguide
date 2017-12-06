@@ -1,8 +1,8 @@
-#HTML
+# HTML
 
 ## Introduction
 
-In this section we will be discussing HTML guidelines and rules to be used in all projects. You can distinguish rules from guidelines by the use of the words **MUST** and **MAY**; **MUST** indicating a rule, **MAY** indicating a guideline. Throughout this section, to avoid repeating the same code over and over (keep it DRY), we will be contrasting the don'ts with this example:
+In this section we will be discussing HTML guidelines and rules to be used in all projects. Throughout this section, to avoid repeating the same code over and over (keep it DRY), we will be contrasting the don'ts with this example:
 
 ```HTML
 <body>
@@ -45,7 +45,7 @@ All examples that follow will be an example of what **NOT** to do in contrast to
 
 ## Cleanliness
 
-Maintainability is of primary concern here. If a developer looks at your markup and cannot glean the structure of your site, you're doing something wrong.
+Maintainability is of primary concern here. If a developer looks at your markup and cannot easily glean the structure of your site, you're doing something wrong.
 
 ### Concise Markup
 
@@ -116,8 +116,8 @@ Tags that do not necessitate a Class or ID **MUST** not have them. **NOT** this:
                 ...
             </article>
         </section>
-        <section>
-        </section>
+        <aside>
+        </aside>
     </main>
     <footer>
     </footer>
@@ -134,7 +134,7 @@ The next thing to take away from the top example is the use of semantic HTML ele
 
 There is not a semantic HTML element for every situation, but their primary function is to provide the basic layout of a site. To that end, we suggest referring to the [Mozilla Developer Network HTML Element Guide](https://developer.mozilla.org/en-US/docs/Web/HTML/Element) and gaining a knowledge of the available semantic HTML elements and an understanding of when to use them.
 
-That said, there frequently *are* situations in which there is no semantic HTML element, and a `<div>...</div>` or `<span>...</span>` is the appropriate thing to use. The main things to keep in mind here are the cleanliness we discussed above. Do not apply a Class or ID if it is not necessary, and make sure to make your markup as concise as possible, not adding elements if they are not necessary.
+That said, there frequently *are* situations in which there is no semantic HTML element, and a `<div>...</div>` or `<span>...</span>` is the appropriate element to use. The main things to keep in mind here are the cleanliness we discussed above. Do not apply a Class or ID if it is not necessary, and ensure your markup as concise as possible, not adding elements if they are not necessary.
 
 If a Class or ID is necessary, ensure that the identifier it is given is semantic, in that it details the function of that element.
 

@@ -1,261 +1,185 @@
-# CSS and SASS
+# CSS and SCSS
 
-Below is a collection of rules and preferred methods of writing CSS and SASS. This will be expanded upon as time goes on and use cases pop up.
+## Introduction
 
-## Basics
-
-### Naming
-
-Semantic naming is the goal here. If there is not a semantic HTML element to use, make sure your naming of an element with a Class or ID relays information about the function of that element. Example, this:
-
-HTML
-```HTML
-<form class="contact">
-  <input class="contact__first">
-</form>
-```
-
-Not this:
-
-HTML
-```HTML
-<form class="form">
-  <input class="input">
-</form>
-```
-
-This is not to say semantic HTML elements cannot have Classes and, therefore, styles applied to them, simply that for the sake of accessibility, we use semantic HTML where possible.
-
-### BEM
-
-The Block-Element-Modifier (BEM) naming standard is to be used.
-
-
-#### Block
-
-Blocks of code and/or markup used together are grouped into blocks. Example:
-
-```HTML
-<section class="contact">
-  <form>
-    <input>
-    <input>
-    <input>
-  </form>
-</section>
-```
-
-In this instance, the section is the block, containing a contact form. Note that the block Class name is semantic: it indicates the function of the section it is naming.
-
-#### Element
-
-Double underscores indicate elements within a block. Example:
-
-HTML
-```HTML
-<section class="contact">
-  <form>
-    <input class="contact__first">
-    <input class="contact__last">
-    <input class="contact__email">
-  </form>
-</section>
-```
-
-CSS
-```CSS
-.contact {
-  //styles
-}
-
-.contact__first {
-  //styles
-}
-```
-
-#### Modifier
-
-Double hyphens indicate element modifiers, I.E. an incomplete input. As above, keep it semantic:
-
-CSS
-```CSS
-.contact__first--incomplete {
-  //styles
-}
-
-.contact__first--valid {
-  //styles
-}
-```
-
-The end result being semantic CSS that makes it easy to skim and discern what is being styled and why.
-
-### Rule Declaration
-
-When applying styles to multiple elements, each declared element is separated by a comma and placed on a new line. Example:
+This section deals with our guidelines and rules for writing CSS and SCSS. This section will be broken into two parts, the first being general CSS rules, the second being focused on SCSS best practices. To keep things DRY in this section, we will primarily be referring back to this example, which is related to the example provided in the HTML section:
 
 ```CSS
-.element,
-.element-2,
-.element-3 {
-  //styles
+nav {
+    ...
+}
+
+nav ul {
+    ...
+}
+
+.nav__link {
+    ...
 }
 ```
+
+**Semantics** are of less concern in CSS because styles do not directly affect the structure of the site or its functionality, but they are still of concern, as are **cleanliness** and **brevity**, all of which will be addressed in order below, after some general rules.
+
+# CSS
+
+## General
+
+### Indentation
+
+As with HTML, double indentation here. 4 spaces, 2 tabs, whatever.
 
 ### Media Queries
 
-When doing media queries, from top to bottom, start with core styles, then work your way down in size from there. Example:
+When styling anything based on viewport width, start with core styles and then work your way down in size from the core styles.
 
 ```CSS
-.element {
-  //core styles
+nav {
+    //core styles
+    ...
 }
 
 @media (min-width: 1280px) {
-  .element {
-    //big styles
-  }
+    nav {
+        //full size styles
+    }
 }
 
 @media (max-width: 1279px) {
-  .element {
-    //small styles
-  }
+    nav {
+        //slightly smaller styles
+    }
 }
 
-@media (max-width: 770px) {
-  .element {
-    //even smaller styles
-  }
+@media (max-width: 960px) {
+    nav {
+        //small styles
+    }
+}
+
+@media (max-width: 720px) {
+    nav {
+        //smaller styles
+    }
 }
 
 @media (max-width: 480px) {
-  .element {
-    //smallest styles
-  }
+    nav {
+        //smallest styles
+    }
 }
 ```
 
-### Class and ID Declaration
+When working in pure CSS, media queries are done in groups at the bottom of your CSS file, above which all core declarations go.
 
-Class and ID are not to be used interchangeably. Class declarations are to be used to declare a style that will be reused on multiple elements. ID declarations are to be used on distinct, single use elements.
+## Semantics
 
-## SASS/SCSS
-
-We use SASS/SCSS because we are civilized. More specifically, we use SCSS for reasons.
-
-My preferred method of writing SCSS, **and this is directed at you Zach**, so you can correct me if you feel differently, is to write out SCSS in the same structure it is declared in HTML. This allows the DOM structure to be gleaned by looking at the SCSS so a basic understanding of layout can come together. There are limits to this, and ultimately it does not result in terribly beautiful compiled CSS, but I am also of the opinion that if you're writing SCSS to compile into minified CSS, maintainability of the SCSS is more important than readability of the resulting CSS. Example:
+Semantics with regard to CSS refer primarily to the system used to name elements that are not semantic on their own. As stated in the HTML section, we use the Block-Element-Modifier (BEM) naming convention. Briefly, a group of code dealing with one function or section is grouped into a Block, children of which are Elements, which **MAY** have modifier classes available to them. Consider the given example from the HTML section:
 
 ```HTML
-<section class="stories">
-  <article class="stories__hot-ass-update">
-    <p>A bunch of crazy stuff happened, broh. Like it's nuts how much crap is going on.</p>
-  </article>
-</section>
+<nav>
+    <ul>
+        <li class="nav__link">...</li>
+        <li class="nav__link">...</li>
+        <li class="nav__link">...</li>
+        ...
+    </ul>
+</nav>
 ```
+
+In this instance, the `<nav>...</nav>` element is the Block, the `<li class="nav__link">...</li>` are the Elements, because the `<ul>...</ul>` is serving primarily as a container for the `<li class="nav__link">...</li>` elements and does not *necessitate* its own specific identifier in the BEM convention. Note that elements are indicated as part of a block by a double underscore.
+
+Modifiers indicate styles that are applied to an element as a result of user interaction, usually by way of JavaScript, indicated by double hyphens.
+
+```CSS
+.nav__link--current {
+    ...
+}
+```
+
+The intended result of this naming system is that all Class and ID declarations are *necessary* and *semantic*. It encourages the developer to ensure their Class and IDs serve a purpose that is related to their function, and to think about their elements less as individual elements and more as pieces contributing to the function of a whole.
+
+## Organization
+
+Lay your CSS out in an arrangement that follows your HTML markup. This ensures ease of jumping between HTML and CSS, and even further allows a dev to glean from your CSS the basic layout and look of your site without looking at the HTML or even the rendered site itself.
+
+```CSS
+body {
+    ...
+}
+
+header {
+    ...
+}
+
+main {
+    ...
+}
+
+footer {
+    ...
+}
+```
+
+## Brevity
+
+Basically, do not write any code that does not need to be written. As much as possible, limit your declarations to the shorthand versions:
+
+```CSS
+.nav__link {
+    margin: 15px 20px 25px 30px; //top, right, bottom, left OR
+    margin: 15px 20px; //top and bottom, left and right OR
+    margin: 15px; //all sides together
+}
+```
+
+The first time you declare a rule, comment it to indicate *what* is being styled and why.
+
+# SCSS
+
+## Introduction
+
+Below is a collection of SCSS specific rules and guidelines.
+
+## General
+
+### Nesting
+
+In keeping with the goal of organizing your CSS in a similar format to your markup, nest your SCSS declarations in a similar way.
 
 ```SCSS
-.stories {
-  //styles
+body {
+    ...
 
-  .stories__hot-ass-update {
-    //styles
+    header {
+        ...
 
-    p {
-      //styles
+        nav {
+            ...
+        }
     }
-  }
+
+    main {
+        ...
+
+        section {
+            ...
+        }
+
+        aside {
+            ...
+        }
+    }
+
+    footer {
+        ...
+    }
 }
 ```
 
-### Media Queries
+Declaring `.body {...}` is not entirely necessary but, depending on the structure of your site, it might help to apply a class on `<body>...</body>` to indicate, for instance, which page or section of the site to which the `.body {...}` is referring. This helps ensure specificity when declaring styles and helps keep your code organized.
 
-Media queries are to be declared on an element to element basis, within the CSS declaration of that element. Example, this:
+### Partials
 
-```CSS
-.element {
-  //styles
+Use as many partials as desired, as long as they are all appropriate in terms of organization and they are all imported into the master SCSS file.
 
-  @media (min-width: 480px) {
-    //smaller styles
-  }
-}
-```
-
-Not this:
-
-```CSS
-.element {
-  //styles
-}
-
-@media (min-width: 480px) {
-  .element {
-    //smaller styles
-  }
-}
-```
-
-Note that it would be preferred to make media queries the same among various elements, so as not to add unnecessary bulk to the compiled CSS. Example, this:
-
-```CSS
-.element {
-  //styles
-
-  @media (min-width: 480px) {
-    //smaller styles
-  }
-}
-
-.element-2 {
-  //styles
-
-  @media (min-width: 480px) {
-    //smaller styles
-  }
-}
-```
-
-Not this:
-
-```CSS
-.element {
-  //styles
-
-  @media (min-width: 480px) {
-    //smaller styles
-  }
-}
-
-.element-2 {
-  //styles
-
-  @media (min-width: 460px) {
-    //smaller styles
-  }
-}
-```
-
-### Rule Declaration Order
-
-To keep it semantic, legible and, most importantly, consistent, rule declarations are to be done in the order of Core, Altered State and Media Query. Example:
-
-```CSS
-.element {
-  //styles
-
-  &:hover,
-  &:focus {
-    //hover styles (good band name)
-  }
-
-  @media (min-width: 480px) {
-    //small styles
-  }
-
-  @media (max-width: 479px) {
-    //even smaller styles
-  }
-}
-
-```
+Variables, separate pages and reusable styles are encouraged to be in their own partials.
