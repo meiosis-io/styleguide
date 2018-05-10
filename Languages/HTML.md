@@ -157,8 +157,16 @@ In this instance, the Block part of BEM is the `<nav>...</nav>` element, and the
 
 ## Accessibility
 
-If you follow the guides above, half of the work in terms of accessibility is done for you. Semantic HTML elements help screen readers discern the layout of your site and what is most important, and keeping your markup and code concise helps facilitate expeditious delivery of your site to people who may not have the most robust internet connection. A few more things to keep in mind are `alt` tags on images and (insert more here). With regard to `alt` tags, there are really just two rules:
+If you follow the guides above, half of the work in terms of accessibility is done for you. Semantic HTML elements help screen readers discern the layout of your site and what is most important, and keeping your markup and code concise helps facilitate expeditious delivery of your site to people who may not have the most robust internet connection. Another to keep in mind are `alt` tags on images and videos. With regard to `alt` tags, there are really just two rules:
 
 1. If an image or video is serving a purpose or contributing content to a page, it **MUST** have a completed, descriptive alt tag.
 
-2. If an image or video is purely cosmetic, such as adding some texture to a site or a video background, you **MAY** omit an alt tag entirely.
+2. If an image or video is purely cosmetic, such as adding some texture to a site or a video background, you **MUST** omit an alt tag entirely, and in addition, you **MUST** include the `aria-hidden="true"` attribute.
+
+Further, each element or section that is purely cosmetic or functional, providing no information, you **MUST** include the `aria-hidden="true"` attribute. In addition, for each element or section that *does* provide information or content, a `role` attribute **MUST** be supplied to assist in navigation and accessibility for screen readers. Consult [Mozilla Developer Network's 'Using Aria' Guide](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques) to reference the difference between aria landmarks, widgets, composite and document structure roles, all of which should be utilized where necessary and applicable.
+
+### Buttons
+
+Special attention must be given to the creation and styling of buttons. This section will be brief; the more intricate description of button styling will be relegated to the CSS section. Of primary concern, here, is the choice between a `<button>...</button>` element, or an `<a>...</a>` element. As many developers simply reach for these interchangeably, or neglect both in preference of using a `<div>...</div>` or `<span>...</span>`, this topic must at least be discussed. Any element designed as a button **MUST** be either a `<button>...</button>` element, or an `<a>...</a>` element, **NOT** any other element, regardless of their intended function.
+
+When choosing between a `<button>...</button>` element, or an `<a>...</a>` element, one must consider the intended function. A button that transports the user to another page **MUST** be an `<a>` element. A button that is intended as a point of user interaction, such as changing content on a page or triggering a script or form submission **MUST** be a `<button>` element. This is entirely independent of styling; from a purely markup based perspective, this is the most accessible option as screen readers can easily differentiate between function for users.

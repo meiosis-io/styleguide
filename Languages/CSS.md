@@ -98,6 +98,12 @@ Modifiers indicate styles that are applied to an element as a result of user int
 
 The intended result of this naming system is that all Class and ID declarations are *necessary* and *semantic*. It encourages the developer to ensure their Class and IDs serve a purpose that is related to their function, and to think about their elements less as individual elements and more as pieces contributing to the function of a whole.
 
+### Buttons
+
+Touching on, briefly, the button discussion from the HTML section. In short, follow the design guidelines. You are more than welcome to style both `<button>` and `<a>` elements exactly the same, as long as their presence on any given page is based on intended functionality, as discussed in the HTML section. When styling buttons (in the broad sense of buttons), you must include focus and active styles to aid in accessibility.
+
+To be clear, one need not style *all* `<a>` elements to behave as buttons. The recommendation here is to indicate all `<a>` elements that are intended to function as buttons with a class, e.g. `<a href="..." class="button">...</a>` or `<a href="..." class="btn">...</a>`, optionally with additional classes indicating the *type* of button the link will be. Either `.button` or `.btn` or whatever other indicator class you want is fine as long as there is adequate documentation.
+
 ## Organization
 
 Lay your CSS out in an arrangement that follows your HTML markup. This ensures ease of jumping between HTML and CSS, and even further allows a dev to glean from your CSS the basic layout and look of your site without looking at the HTML or even the rendered site itself.
@@ -176,11 +182,11 @@ body {
 }
 ```
 
-Declaring `.body {...}` is not entirely necessary but, depending on the structure of your site, it might help to apply a class on `<body>...</body>` to indicate, for instance, which page or section of the site to which the `.body {...}` is referring. This helps ensure specificity when declaring styles and helps keep your code organized.
+Declaring `body {...}` is not entirely necessary but, depending on the structure of your site, it might help to have a container on a per-page basis that wraps everything on the page; in this instance, body is what we're using.
 
 ### Partials
 
-Use as many partials as desired, as long as they are all appropriate in terms of organization and they are all imported into the master SCSS file.
+Given the practicality of partials, you are encouraged to use as many as you see fit, provided they are organized in a tidy and semantic way. An example would be having a separate partial for each individual page of a site, a separate partial for each static element (e.g. navigation, header, footer), a separate partial containing variables (e.g. brand style guides, etc), a separate partial containing a group of related styles (e.g. button styles)
 
 Variables, separate pages and reusable styles are encouraged to be in their own partials.
 
